@@ -6,7 +6,7 @@ lang.instructions = {['You will be shown words, one at a time, printed in differ
                       ' to start the experiment]']};
 
 lang.correct = {'correct'};
-lang.incorect = {'incorrect'};
+lang.incorrect = {'incorrect'};
 
 lang.words = {'red', 'green', 'blue', 'magenta'};
 lang.colors = lang.words;

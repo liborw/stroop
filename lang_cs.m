@@ -5,7 +5,7 @@ lang.instructions = {['V tomto oknì se budou obìvovat barevná slova va¹ím úkolem
                       'zelené, m pro modré a f pro fialové slovo.'],...
                      '[niní zmáèkni mezerník pro spu¹tìní experimentu]'};
 lang.correct = {'správnì'};
-lang.incorect = {'¹patnì'};
+lang.incorrect = {'¹patnì'};
 
 lang.words = {'èervená', 'zelená', 'modrá', 'fialová'};
 lang.colors = {'red', 'green', 'blue', 'magenta'};
