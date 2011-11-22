@@ -1,10 +1,16 @@
-function trials = stroop()
+function trials = stroop(lang)
 %STROOP The Stroop test
 %
 % SINOPSIS
 % INPUTS
 
+% Load language
+eval(['lang_' lang]);
+
+% Options
 NTRIALS = 10;
+
+
 WORDS = {'èervená', 'modrá', 'zelená', 'fialová'};
 COLORS = {'red', 'blue', 'green', 'cyan'};
 KEYS = 'cmzf';
@@ -18,15 +24,8 @@ set(h, 'NumberTitle', 'off', ...
        'MenuBar','none', ...
        'ToolBar', 'none');
 
-% Show instructions
-string = {['Lorem Ipsum is simply dummy text of the printing and',...
-          ' typesetting industry. Lorem Ipsum has been the industrys',...
-          ' standard dummy text ever since the 1500s, when an unknown',...
-          ' printer took a galley of type and scrambled it to make a',...
-          ' type specimen book [press any key to start]']};
-
 % Display instruction
-ht = show_text(h, string);
+ht = show_text(h, lang.instructions);
 waitforspace(h);
 delete(ht);
 
@@ -49,7 +48,9 @@ while ntrials < NTRIALS
 
     % Pause for 1 + (0-2) s and display
     pause(0.5 + rand*2);
-    ht = show_text(h, WORDS(iNoise), 'FontSize', 40, 'ForegroundColor', COLORS{iStimul});
+    ht = show_text(h, lang.words(iNoise),...
+                'FontSize', 40,...
+                'ForegroundColor', lang.colors{iStimul});
     tic;
 
     % Wait for user input
@@ -58,7 +59,7 @@ while ntrials < NTRIALS
     ch = get(h, 'CurrentCharacter');
     delete(ht);
 
-    if ch == KEYS(iStimul)
+    if ch == lang.keys(iStimul)
         ntrials = ntrials + 1;
         if mixed, nmixed = nmixed + 1; end;
         ht = show_text(h, {'correct'}, 'ForegroundColor', 'green');
@@ -68,9 +69,9 @@ while ntrials < NTRIALS
     end
 
     % Store result
-    trials{end+1, 1} = KEYS(iStimul);
-    trials{end, 2} = KEYS(iNoise);
-    trials{end, 3} = ch;
+    trials{end+1, 1} = iStimul;
+    trials{end, 2} = iNoise;
+    trials{end, 3} = find(lang.keys == ch);
     trials{end, 4} = rtime;
 
     % Show result for 0.5 s and continue
