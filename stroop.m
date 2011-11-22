@@ -1,15 +1,23 @@
-function trials = stroop(lang)
+function trials = stroop(num, lang)
 %STROOP The Stroop test
 %
 % SINOPSIS
-% INPUTS
+%   trials = stroop();
+%   trials = stroop(num);
+%   trials = stroop(num, lang);
+%
+% INPUT
+%   num     Number of trials {100}
+%   lang    Language of experiment {en} | cs
+%
+
+% User input
+if nargin==0, lang = 'en', end;
+if nargin==1, num = 100, end;
+
 
 % Load language
 eval(['lang_' lang]);
-
-% Options
-NTRIALS = 10;
-
 
 WORDS = {'èervená', 'modrá', 'zelená', 'fialová'};
 COLORS = {'red', 'blue', 'green', 'cyan'};
@@ -36,7 +44,7 @@ nerrors = 0; % Number of incorrect replies
 trials  = cell(0,4);
 
 % Start test
-while ntrials < NTRIALS
+while ntrials < num
 
     % Chose between normal or mixed
     mixed = rand() > (nmixed/(ntrials - nmixed))/2;
