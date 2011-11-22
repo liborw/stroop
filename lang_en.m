@@ -11,3 +11,10 @@ lang.incorrect = {'incorrect'};
 lang.words = {'red', 'green', 'blue', 'magenta'};
 lang.colors = lang.words;
 lang.keys = 'rgbm';
+lang.label_agree = 'Agreeing  stimulus';
+lang.label_differ = 'Differing stimulus';
+lang.xlabel = 'Reaction time (s)';
+lang.ylabel = 'Normalized frequency';
+lang.current_results = 'Current results';
+lang.overall_results = 'Overall results of %d experiments';
+

@@ -113,18 +113,16 @@ figure(h);
 set(h, 'Color', 'white');
 subplot(2,1,1);
     bar(bins, [fMatch/sum(fMatch); fDiffer/sum(fDiffer)]');
-    title('Your results');
-    xlabel('Reaction time (s)');
-    ylabel('Normalized frequency');
-    legend('Matching', 'Mixed')
+    title(lang.current_results);
+    xlabel(lang.xlabel);
+    ylabel(lang.ylabel);
+    legend(lang.label_agree, lang.label_differ);
 subplot(2,1,2);
     bar(bins, [FMatch/sum(FMatch); FDiffer/sum(FDiffer)]');
-    title(['Result of all ' num2str(Count) ' experiments']);
-    xlabel('Reaction time (s)');
-    ylabel('Normalized frequency');
-    legend('Matching', 'Mixed')
-
-
+    title(sprintf(lang.overall_results, Count));
+    xlabel(lang.xlabel);
+    ylabel(lang.ylabel);
+    legend(lang.label_agree, lang.label_differ);
 
 end
 
