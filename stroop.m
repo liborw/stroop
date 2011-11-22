@@ -86,8 +86,46 @@ fprintf('ratio mixed/normal: %0.3f\n', nmixed/(ntrials-nmixed));
 fprintf('# all trials:       %d\n', size(trials, 1));
 fprintf('# incorrect trials: %d\n', nerrors);
 
+% Compute result
+mixed = [trials{:,1}] ~= [trials{:,2}];
+correct =  [trials{:,1}] == [trials{:,3}];
+bins = [0.2:0.3:4];
+fDiffer  = hist([trials{mixed & correct, 4}], bins);
+fMatch = hist([trials{~mixed & correct, 4}], bins);
 
-delete(h);
+% Load data
+if exist('stats.mat', 'file')
+    load('stats.mat');
+    FMatch = FMatch + fMatch;
+    FDiffer = FDiffer + fDiffer;
+    Count = Count + 1;
+else
+    FMatch = fMatch;
+    FDiffer = fDiffer;
+    Count = 1;
+end
+
+% Save results
+save('stats.mat', 'FMatch', 'FDiffer', 'Count');
+
+% Show results
+figure(h);
+set(h, 'Color', 'white');
+subplot(2,1,1);
+    bar(bins, [fMatch/sum(fMatch); fDiffer/sum(fDiffer)]');
+    title('Your results');
+    xlabel('Reaction time (s)');
+    ylabel('Normalized frequency');
+    legend('Matching', 'Mixed')
+subplot(2,1,2);
+    bar(bins, [FMatch/sum(FMatch); FDiffer/sum(FDiffer)]');
+    title(['Result of all ' num2str(Count) ' experiments']);
+    xlabel('Reaction time (s)');
+    ylabel('Normalized frequency');
+    legend('Matching', 'Mixed')
+
+
+
 end
 
 function waitforspace(h)
