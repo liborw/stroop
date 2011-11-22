@@ -62,10 +62,10 @@ while ntrials < NTRIALS
     if ch == lang.keys(iStimul)
         ntrials = ntrials + 1;
         if mixed, nmixed = nmixed + 1; end;
-        ht = show_text(h, {'correct'}, 'ForegroundColor', 'green');
+        ht = show_text(h, lang.correct, 'ForegroundColor', 'green');
     else
         nerrors = nerrors + 1;
-        ht = show_text(h, {'incorrect'}, 'ForegroundColor', 'red');
+        ht = show_text(h, lang.incorrect, 'ForegroundColor', 'red');
     end
 
     % Store result
