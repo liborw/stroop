@@ -12,8 +12,8 @@ function trials = stroop(num, lang)
 %
 
 % User input
-if nargin==0, lang = 'en', end;
-if nargin==1, num = 100, end;
+if nargin<=1, lang = 'en'; end;
+if nargin<=0, num = 100; end;
 
 
 % Load language
@@ -33,7 +33,7 @@ set(h, 'NumberTitle', 'off', ...
        'ToolBar', 'none');
 
 % Display instruction
-ht = show_text(h, lang.instructions);
+ht = show_text(h, lang.instructions, 'FontSize', 20);
 waitforspace(h);
 delete(ht);
 
@@ -70,10 +70,10 @@ while ntrials < num
     if ch == lang.keys(iStimul)
         ntrials = ntrials + 1;
         if mixed, nmixed = nmixed + 1; end;
-        ht = show_text(h, lang.correct, 'ForegroundColor', 'green');
+        ht = show_text(h, lang.correct, 'ForegroundColor', 'green', 'FontSize', 20);
     else
         nerrors = nerrors + 1;
-        ht = show_text(h, lang.incorrect, 'ForegroundColor', 'red');
+        ht = show_text(h, lang.incorrect, 'ForegroundColor', 'red', 'FontSize', 20);
     end
 
     % Store result
@@ -97,7 +97,7 @@ fprintf('# incorrect trials: %d\n', nerrors);
 % Compute result
 mixed = [trials{:,1}] ~= [trials{:,2}];
 correct =  [trials{:,1}] == [trials{:,3}];
-bins = [0.2:0.3:4];
+bins = 0.2:0.3:4;
 fDiffer  = hist([trials{mixed & correct, 4}], bins);
 fMatch = hist([trials{~mixed & correct, 4}], bins);
 
