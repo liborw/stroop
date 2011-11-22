@@ -72,6 +72,9 @@ while ntrials < num
         if mixed, nmixed = nmixed + 1; end;
         ht = show_text(h, lang.correct, 'ForegroundColor', 'green', 'FontSize', 20);
     else
+        % Check for unknown characters
+        
+            
         nerrors = nerrors + 1;
         ht = show_text(h, lang.incorrect, 'ForegroundColor', 'red', 'FontSize', 20);
     end
@@ -79,7 +82,11 @@ while ntrials < num
     % Store result
     trials{end+1, 1} = iStimul;
     trials{end, 2} = iNoise;
-    trials{end, 3} = find(lang.keys == ch);
+    if length(find(lang.keys == ch)) > 0
+        trials{end, 3} = find(lang.keys == ch);
+    else
+        trials{end, 3} = 0;
+    end
     trials{end, 4} = rtime;
 
     % Show result for 0.5 s and continue
@@ -97,7 +104,7 @@ fprintf('# incorrect trials: %d\n', nerrors);
 % Compute result
 mixed = [trials{:,1}] ~= [trials{:,2}];
 correct =  [trials{:,1}] == [trials{:,3}];
-bins = 0.2:0.3:4;
+bins = 0.2:0.2:3;
 fDiffer  = hist([trials{mixed & correct, 4}], bins);
 fMatch = hist([trials{~mixed & correct, 4}], bins);
 
