@@ -1,7 +1,7 @@
 function trials = stroop(num, lang)
 %STROOP The Stroop test
 %
-% SINOPSIS
+% SYNOPSIS
 %   trials = stroop();
 %   trials = stroop(num);
 %   trials = stroop(num, lang);
