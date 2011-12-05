@@ -22,6 +22,19 @@ In Matlab:
    	
    	$ stroop(100, 'cs')
 
+## Screenshots
+
+Information screen
+
+![Info](https://github.com/liborw/stroop/raw/master/fig/info.png)
+
+Agreeing stimuli
+
+![Red](https://github.com/liborw/stroop/raw/master/fig/red.png)
+
+Disagreeing stimuli
+
+![Green](https://github.com/liborw/stroop/raw/master/fig/green.png)
 
 ## Acknowledgement
 This project is part of [x33ksy: Cognitive Systems][x33ksy-link] course at [Faculty of Electrical Engineering][fee-link] of [Czech Technical University][ctu-link].
