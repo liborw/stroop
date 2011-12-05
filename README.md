@@ -19,6 +19,8 @@ In Matlab:
  	INPUT
    		num     Number of trials {100}
    		lang    Language of experiment {en} | cs
+   	
+   	$ stroop(100, 'cs')
 
 
 ## Acknowledgement
