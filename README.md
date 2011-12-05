@@ -22,9 +22,9 @@ In Matlab:
 
 
 ## Acknowledgement
-This project is part of [x33ksy: Cognitive Systems (CZ)][x33ksy-link] course at [Faculty of Electrical Engineering][fee-link] of [Czech Technical University][ctu-link].
+This project is part of [x33ksy: Cognitive Systems][x33ksy-link] course at [Faculty of Electrical Engineering][fee-link] of [Czech Technical University][ctu-link].
 
 [fee-link]: http://www.fel.cvut.cz/
 [ctu-link]: http://www.cvut.cz/en?set_language=en
 [stroop-link]: http://en.wikipedia.org/wiki/Stroop_effect
-
+[x33ksy-link]: http://www.fel.cvut.cz/education/bk.en/predmety/11/53/p11532804.html
